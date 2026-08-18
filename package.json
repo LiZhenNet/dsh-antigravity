@@ -1,0 +1,73 @@
+{
+  "name": "dsh-antigravity",
+  "version": "0.0.1",
+  "description": "Google Antigravity / Cloud Code Assist model provider for DeepSeek Harness",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib",
+    "bin",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "assets"
+  ],
+  "bin": {
+    "antigravity-login": "bin/antigravity-login.mjs"
+  },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check bin/antigravity-login.mjs",
+    "pack:dist": "mkdir -p dist && npm pack --pack-destination dist"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "antigravity",
+    "google",
+    "cloud-code-assist",
+    "oauth",
+    "llm",
+    "adapter"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiZhenNet/dsh-antigravity.git"
+  },
+  "homepage": "https://github.com/LiZhenNet/dsh-antigravity#readme",
+  "bugs": {
+    "url": "https://github.com/LiZhenNet/dsh-antigravity/issues"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-home-paths": "*",
+    "@deepseek-ai/dsh-host-webserver": "*",
+    "@deepseek-ai/dsh-llm": "*",
+    "@deepseek-ai/dsh-timeout": "*"
+  },
+  "peerDependenciesMeta": {
+    "*": {
+      "optional": true
+    }
+  }
+}
