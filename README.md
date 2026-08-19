@@ -4,10 +4,12 @@
   <img src="./assets/images/chat-model-picker.png" alt="dsh-antigravity" width="100%" />
 </p>
 
+English | [简体中文](./README.zh.md)
+
 Google Antigravity / Cloud Code Assist model provider for
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 
-This is a DSH Web plugin, not a Pi extension. It registers a DSH `LlmAdapter`
+This is a DSH Web plugin. It registers a DSH `LlmAdapter`
 under provider route `antigravity`, stores OAuth credentials under DSH home, and
 talks to the Cloud Code Assist streaming API directly.
 
