@@ -28,7 +28,7 @@ dsh plugin --profile web add github:LiZhenNet/dsh-antigravity
 
 ```sh
 npm run pack:dist
-dsh plugin --profile web add ./dist/dsh-antigravity-0.0.3.tgz
+dsh plugin --profile web add ./dist/dsh-antigravity-0.0.4.tgz
 ```
 
 The package declares a DSH bundle patch, so installation automatically mounts
