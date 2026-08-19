@@ -26,7 +26,7 @@ dsh plugin --profile web add github:LiZhenNet/dsh-antigravity
 
 ```sh
 npm run pack:dist
-dsh plugin --profile web add ./dist/dsh-antigravity-0.0.1.tgz
+dsh plugin --profile web add ./dist/dsh-antigravity-0.0.2.tgz
 ```
 
 The package declares a DSH bundle patch, so installation automatically mounts
@@ -60,7 +60,12 @@ Google OAuth and refreshes quota after login completes.
 
 ![Antigravity Settings - Not Signed In](./assets/images/settings-not-signed-in.png)
 
-After login, the settings page displays account information, live quota bars, reset times, and model selector options:
+After login, the settings page displays account information, quota grouped by model family, reset times, and model selector options:
+
+- **Gemini Models** — Gemini Flash / Pro variants share one quota pool (green bars).
+- **Claude and GPT models** — Claude Opus, Claude Sonnet, and GPT-OSS share a separate 3P quota pool (cyan bars).
+
+Each group shows a **5-hour limit** (smooths short-term demand) and a **weekly limit** (tied to your subscription tier) with a live countdown to reset.
 
 ![Antigravity Settings - Signed In with Quota](./assets/images/settings-signed-in.png)
 
@@ -82,21 +87,29 @@ Keep that file private. It contains access and refresh tokens.
 
 ## Models
 
-After login, select the **Antigravity** provider in DSH's model picker.
+After login, select the **Antigravity** provider in DSH's model picker. Use the
+model selector in **Settings > Antigravity** to enable or disable individual
+models — the live remaining quota percentage is shown next to each one.
 
 Registered model IDs:
 
-- `gemini-3.7-flash` (Gemini 3.7 Flash)
-- `gemini-3.6-flash` (Gemini 3.6 Flash)
-- `gemini-3.5-flash` (Gemini 3.5 Flash)
-- `gemini-3.1-pro` (Gemini 3.1 Pro)
-- `gemini-3.1-flash-image` (Gemini 3.1 Flash Image)
-- `gemini-3-flash` (Gemini 3 Flash)
-- `gemini-2.5-pro` (Gemini 2.5 Pro)
-- `gemini-2.5-flash` (Gemini 2.5 Flash)
-- `claude-opus-4-6` (Claude Opus 4.6)
-- `claude-sonnet-4-6` (Claude Sonnet 4.6)
-- `gpt-oss-120b` (GPT-OSS 120B)
+| Model ID | Name | Quota pool |
+|---|---|---|
+| `gemini-3.7-flash` | Gemini 3.7 Flash | Gemini |
+| `gemini-3.6-flash` | Gemini 3.6 Flash | Gemini |
+| `gemini-3.5-flash` | Gemini 3.5 Flash | Gemini |
+| `gemini-3.1-pro` | Gemini 3.1 Pro | Gemini |
+| `gemini-3.1-flash-image` | Gemini 3.1 Flash Image | Gemini |
+| `gemini-3-flash` | Gemini 3 Flash | Gemini |
+| `gemini-2.5-pro` | Gemini 2.5 Pro | Gemini |
+| `gemini-2.5-flash` | Gemini 2.5 Flash | Gemini |
+| `claude-opus-4-6` | Claude Opus 4.6 | Claude & GPT (3P) |
+| `claude-sonnet-4-6` | Claude Sonnet 4.6 | Claude & GPT (3P) |
+| `gpt-oss-120b` | GPT-OSS 120B | Claude & GPT (3P) |
+
+Models in the same quota pool share a weekly limit and a 5-hour limit. Quota is
+consumed proportionally to token cost, so heavier models (e.g. Claude Opus)
+drain the pool faster than lighter ones.
 
 The plugin resolves these public IDs to runtime model IDs using the live
 `fetchAvailableModels` catalog when available, with static routing fallbacks.
