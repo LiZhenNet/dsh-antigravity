@@ -1,6 +1,6 @@
 {
   "name": "dsh-antigravity",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Google Antigravity / Cloud Code Assist model provider for DeepSeek Harness",
   "type": "module",
   "main": "lib/index.js",
@@ -16,7 +16,8 @@
     },
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-client-ui-settings"
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale"
       ],
       "platform": "web"
     }
