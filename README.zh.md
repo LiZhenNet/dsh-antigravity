@@ -26,7 +26,7 @@ dsh plugin --profile web add github:LiZhenNet/dsh-antigravity
 
 ```sh
 npm run pack:dist
-dsh plugin --profile web add ./dist/dsh-antigravity-0.0.2.tgz
+dsh plugin --profile web add ./dist/dsh-antigravity-0.0.3.tgz
 ```
 
 该 package 声明了 DSH bundle patch，安装后会自动挂载 host 插件与浏览器设置页面。
@@ -86,7 +86,7 @@ $DSH_HOME/storages/antigravity-oauth.json
 
 ## 模型列表
 
-登录后，在 DSH 模型选择器中选择 **Antigravity** 提供商。您可以在 **设置 > Antigravity** 的模型选择器中按需勾选或关闭单个模型，每个模型副标题均会显示其实时可用额度百分比。
+登录后，在 DSH 模型选择器中选择 **Antigravity** 提供商。您可以在 **设置 > Antigravity** 的模型选择器中按需勾选或关闭单个模型（已勾选的模型将自动置顶展示），每个模型副标题均会显示其实时可用额度百分比。
 
 支持注册的模型 ID：
 

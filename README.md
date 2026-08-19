@@ -28,7 +28,7 @@ dsh plugin --profile web add github:LiZhenNet/dsh-antigravity
 
 ```sh
 npm run pack:dist
-dsh plugin --profile web add ./dist/dsh-antigravity-0.0.2.tgz
+dsh plugin --profile web add ./dist/dsh-antigravity-0.0.3.tgz
 ```
 
 The package declares a DSH bundle patch, so installation automatically mounts
@@ -91,7 +91,7 @@ Keep that file private. It contains access and refresh tokens.
 
 After login, select the **Antigravity** provider in DSH's model picker. Use the
 model selector in **Settings > Antigravity** to enable or disable individual
-models — the live remaining quota percentage is shown next to each one.
+models (enabled models are prioritized at the top of the list) — the live remaining quota percentage is shown next to each one.
 
 Registered model IDs:
 
