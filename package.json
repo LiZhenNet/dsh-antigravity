@@ -35,7 +35,7 @@
     "antigravity-login": "bin/antigravity-login.mjs"
   },
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js && node --check bin/antigravity-login.mjs",
+    "check": "node --check lib/index.js && node --check lib/text.js && node --check lib/client.js && node --check bin/antigravity-login.mjs && node --test",
     "pack:dist": "mkdir -p dist && npm pack --pack-destination dist"
   },
   "engines": {
