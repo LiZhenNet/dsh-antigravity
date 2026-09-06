@@ -92,6 +92,7 @@ $DSH_HOME/storages/antigravity-oauth.json
 
 | 模型 ID | 名称 | 额度池 |
 |---|---|---|
+| `gemini-3.8-flash` | Gemini 3.8 Flash | Gemini |
 | `gemini-3.7-flash` | Gemini 3.7 Flash | Gemini |
 | `gemini-3.6-flash` | Gemini 3.6 Flash | Gemini |
 | `gemini-3.5-flash` | Gemini 3.5 Flash | Gemini |

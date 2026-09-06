@@ -97,6 +97,7 @@ Registered model IDs:
 
 | Model ID | Name | Quota pool |
 |---|---|---|
+| `gemini-3.8-flash` | Gemini 3.8 Flash | Gemini |
 | `gemini-3.7-flash` | Gemini 3.7 Flash | Gemini |
 | `gemini-3.6-flash` | Gemini 3.6 Flash | Gemini |
 | `gemini-3.5-flash` | Gemini 3.5 Flash | Gemini |
