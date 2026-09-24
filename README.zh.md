@@ -53,31 +53,21 @@ dsh web
 
 ---
 
-## 登录与授权
+## 登录与账号池管理
 
-打开 **设置（Settings）> Antigravity** 并点击 **登录（Login）**。设置页面将发起 Google OAuth 授权流程，并在登录完成后自动刷新配额（Quota）。
+打开 **设置（Settings）> Antigravity**，支持添加和管理多个 Google 账号：
 
-![Antigravity Settings - 未登录](./assets/images/settings-not-signed-in.png)
+- **智能均衡（默认推荐）**：自动挑选剩余配额最健康的账号发起请求。
+- **429 无感故障转移（Failover）**：当某一账号达到短期速率限制或配额耗尽时，毫秒级自动切换至备用账号重试，前端零感知报错。
+- **无损向后兼容**：初次升级将自动把原 `antigravity-oauth.json` 迁移为账号池主账号，无需重新登录。
+- **前端生图工具集成**：注册 `antigravity_image_generate` 工具，主模型编写前端代码时可直接在后台调起 `gemini-3.1-flash-image` 生成插画素材并自动保存至 `./assets/images`。
 
-登录成功后，设置页面将展示账号信息、按模型分组的实时配额进度条、重置倒计时以及模型选择器：
-
-- **Gemini Models** —— Gemini Flash / Pro 变体共享同一个配额池（绿色进度条）。
-- **Claude and GPT models** —— Claude Opus、Claude Sonnet 与 GPT-OSS 共享独立的 3P 配额池（青色进度条）。
-
-每个分组均展示 **5 小时限额**（平滑短期突发用量）与 **每周限额**（绑定至订阅级别，如 Google AI Pro），并配有实时重置倒计时。
-
-![Antigravity Settings - 已登录](./assets/images/settings-signed-in.png)
-
-插件会在本地启动一个 loopback OAuth 回调服务（`http://localhost:51121/oauth-callback`）。如果 Web 服务无法自动唤起浏览器，可在同机器终端运行命令行登录助手：
-
-```sh
-node "$DSH_HOME/profiles/web/node_modules/dsh-antigravity/bin/antigravity-login.mjs"
-```
+点击 **「＋ 添加 Google 账号」** 可持续追加账号，卡片实时展示各账号独立的 Gemini（绿条）与 Claude（青条）配额进度条。
 
 凭证存储路径：
 
 ```text
-$DSH_HOME/storages/antigravity-oauth.json
+$DSH_HOME/storages/antigravity-pool-accounts.json
 ```
 
 > 请妥善保管该文件，其中包含 access token 与 refresh token。

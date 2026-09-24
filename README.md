@@ -55,34 +55,21 @@ Restart DSH:
 dsh web
 ```
 
-## Login
+## Multi-Account Pool & Login
 
-Open **Settings > Antigravity** and click **Login**. The settings page starts
-Google OAuth and refreshes quota after login completes.
+Open **Settings > Antigravity** to manage Google Antigravity accounts:
 
-![Antigravity Settings - Not Signed In](./assets/images/settings-not-signed-in.png)
+- **Smart Balancing**: Automatically selects the account with the highest remaining quota.
+- **Seamless 429 Failover**: Automatically retries using backup accounts when rate-limited (`RESOURCE_EXHAUSTED`), eliminating client errors.
+- **Backward Compatible**: Automatically migrates existing single `antigravity-oauth.json` into Account 1.
+- **Frontend Image Generation Tool**: Integrates `antigravity_image_generate` to automatically generate web illustrations using `gemini-3.1-flash-image` into `./assets/images`.
 
-After login, the settings page displays account information, quota grouped by model family, reset times, and model selector options:
-
-- **Gemini Models** — Gemini Flash / Pro variants share one quota pool (green bars).
-- **Claude and GPT models** — Claude Opus, Claude Sonnet, and GPT-OSS share a separate 3P quota pool (cyan bars).
-
-Each group shows a **5-hour limit** (smooths short-term demand) and a **weekly limit** (tied to your subscription tier) with a live countdown to reset.
-
-![Antigravity Settings - Signed In with Quota](./assets/images/settings-signed-in.png)
-
-The plugin starts a loopback OAuth callback server at
-`http://localhost:51121/oauth-callback`. If the Web service cannot open a
-browser, run the terminal helper on the same machine:
-
-```sh
-node "$DSH_HOME/profiles/web/node_modules/dsh-antigravity/bin/antigravity-login.mjs"
-```
+Click **「＋ Add Google Account」** to append additional accounts into the pool.
 
 Credentials are stored at:
 
 ```text
-$DSH_HOME/storages/antigravity-oauth.json
+$DSH_HOME/storages/antigravity-pool-accounts.json
 ```
 
 Keep that file private. It contains access and refresh tokens.
