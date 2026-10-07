@@ -92,6 +92,7 @@ $DSH_HOME/storages/antigravity-oauth.json
 
 | 模型 ID | 名称 | 额度池 |
 |---|---|---|
+| `gemini-3.8-flash` | Gemini 3.8 Flash | Gemini |
 | `gemini-3.7-flash` | Gemini 3.7 Flash | Gemini |
 | `gemini-3.6-flash` | Gemini 3.6 Flash | Gemini |
 | `gemini-3.5-flash` | Gemini 3.5 Flash | Gemini |
@@ -100,9 +101,11 @@ $DSH_HOME/storages/antigravity-oauth.json
 | `gemini-3-flash` | Gemini 3 Flash | Gemini |
 | `gemini-2.5-pro` | Gemini 2.5 Pro | Gemini |
 | `gemini-2.5-flash` | Gemini 2.5 Flash | Gemini |
-| `claude-opus-4-6` | Claude Opus 4.6 | Claude & GPT (3P) |
-| `claude-sonnet-4-6` | Claude Sonnet 4.6 | Claude & GPT (3P) |
+| `claude-opus-5-5` | Claude Opus 5.5 | Claude & GPT (3P) |
+| `claude-sonnet-5-5` | Claude Sonnet 5.5 | Claude & GPT (3P) |
 | `gpt-oss-120b` | GPT-OSS 120B | Claude & GPT (3P) |
+
+后端已不再提供的模型会从模型选择器中移除，而不会作为可选模型列出。Claude 模型提供 `low`、`medium`、`high` 三档推理强度，分别映射到 `claude-*-5-5-{low,medium,high}` 运行时 ID。
 
 同一额度池内的模型共享 5 小时与每周额度。额度按 Token 成本比例扣除，因此较重的大模型（如 Claude Opus）消耗额度速度会快于轻量模型。
 

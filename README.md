@@ -97,6 +97,7 @@ Registered model IDs:
 
 | Model ID | Name | Quota pool |
 |---|---|---|
+| `gemini-3.8-flash` | Gemini 3.8 Flash | Gemini |
 | `gemini-3.7-flash` | Gemini 3.7 Flash | Gemini |
 | `gemini-3.6-flash` | Gemini 3.6 Flash | Gemini |
 | `gemini-3.5-flash` | Gemini 3.5 Flash | Gemini |
@@ -105,9 +106,14 @@ Registered model IDs:
 | `gemini-3-flash` | Gemini 3 Flash | Gemini |
 | `gemini-2.5-pro` | Gemini 2.5 Pro | Gemini |
 | `gemini-2.5-flash` | Gemini 2.5 Flash | Gemini |
-| `claude-opus-4-6` | Claude Opus 4.6 | Claude & GPT (3P) |
-| `claude-sonnet-4-6` | Claude Sonnet 4.6 | Claude & GPT (3P) |
+| `claude-opus-5-5` | Claude Opus 5.5 | Claude & GPT (3P) |
+| `claude-sonnet-5-5` | Claude Sonnet 5.5 | Claude & GPT (3P) |
 | `gpt-oss-120b` | GPT-OSS 120B | Claude & GPT (3P) |
+
+Models the backend no longer advertises are dropped from the picker instead of
+being listed as selectable. Claude models expose `low`, `medium`, and `high`
+reasoning efforts, mapped to the corresponding `claude-*-5-5-{low,medium,high}`
+runtime IDs.
 
 Models in the same quota pool share a weekly limit and a 5-hour limit. Quota is
 consumed proportionally to token cost, so heavier models (e.g. Claude Opus)
